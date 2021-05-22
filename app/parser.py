@@ -2,9 +2,11 @@ from datetime import datetime
 
 from os import listdir
 import json
+import nltk
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize, sent_tokenize
 
-def parse_whatsapp(filename):
-
+def parse_whatsapp_file(filename):
     file = open(filename,"r")
 
     lines = file.readlines()
@@ -15,13 +17,14 @@ def parse_whatsapp(filename):
         try:
             date = datetime.strptime(line[:17], '%d/%m/%Y, %H:%M')
 
-            string = print(line[17:].split(":")[1].replace('\n',''))
+            #string = print(line[17:].split(":")[1].replace('\n',''))
             #print(datetime.dline[:15])
             message = {
                 "content": string,
                 "sender": line[17:].split(":")[0],
                 "timestamp": date
             }
+            print(date)
             formatted.append(message)
         except Exception as e:
             #print(e)
@@ -29,9 +32,35 @@ def parse_whatsapp(filename):
         
     return formatted
 
-# also for instagram
+def parse_all():
+    print(parse_messenger())
+    return parse_instagram() + parse_whatsapp() + parse_messenger()
+
+def parse_whatsapp():
+    
+    path = "messages/whatsapp/"
+    formatted = []
+    for filename in listdir(path):
+        formatted += parse_whatsapp_file(path+filename)
+    
+    return formatted
+
+def parse_instagram():
+    if len(listdir("messages/instagram/")) == 0:
+        return []
+    return parse_inbox_type("messages/instagram/inbox/")
+
 def parse_messenger():
-    path = "messages/inbox/"
+    path = "messages/facebook/inbox/"
+    if len(listdir("messages/facebook/")) == 0:
+        return []
+
+    return parse_inbox_type(path)
+
+
+# also for instagram
+def parse_inbox_type(path):
+
     hoomans = []
     chats_dict_by_hooman = {}
 
@@ -78,10 +107,19 @@ chats_dict = parse_messenger()
 messages = [(k,chats_dict[k]) for k in chats_dict][3]
 grouped = group_by_day(messages[1])
 print(grouped)
+def group_by_day_list(messages):
+    grouped = group_by_day(messages)
+    
+    return [ {
+        "date": key,
+        "content": grouped[key]
+    }  for key in grouped.keys()]
 
-import nltk
-from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize, sent_tokenize
+#messages = parse_messenger()
+##grouped = group_by_day(messages)
+#print(grouped)
+
+
 
 def count_word_frequency_in_text(text):
     # Tokenizing the text
