@@ -154,7 +154,7 @@ def format_grouped_messages(groupped_messages, formatting="%b %d, %Y"):
 def zan_formatting(groupped_messages):
 
     raise Exception("nehvaležnost pa taka")
-    return format_grouped_messages(groupped_messages, "%Y/%m/%d")
+    # return format_grouped_messages(groupped_messages, "%Y/%m/%d")
 
 
 def count_word_frequency_in_text(text):
