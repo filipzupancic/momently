@@ -62,25 +62,28 @@ def parse_messenger():
 def parse_inbox_type(path):
 
     hoomans = []
-    chats = {}
+    chats_dict_by_hooman = {}
 
-    for hooman in listdir(path)[:5]:
-        with open(path + hooman + '/message_1.json') as f:
+    for hooman in listdir(path):
+        with open(path + hooman + '/message_1.json', encoding='ASCII') as f:
             data = json.load(f)#.items())
         hoomans.append(hooman)
-        chats[hooman] = data['messages']
-        
-    messages = chats[hoomans[3]]
-    for i, message in enumerate(messages):
-        #print(i)
-        if 'content' in message:
-            message = {'sender_name': message['sender_name'], 'timestamp': datetime.fromtimestamp(message['timestamp_ms']/1000.0), 'content': message['content']}
-        else:
-            message = {'sender_name': message['sender_name'], 'timestamp': datetime.fromtimestamp(message['timestamp_ms']/1000.0), 'content': 'SLIKA TODO'}
-        messages[i] = message
-    #print(messages)
+        chats_dict_by_hooman[hooman] = data['messages']
+    
+    for hooman in hoomans:
+        messages = chats_dict_by_hooman[hooman]
+        for i, message in enumerate(messages):
+            if 'content' in message:
+                new_content = message['content']    
+            else:
+                new_content = 'SLIKA TODO'
+            
+            message = {'sender_name': message['sender_name'], 'timestamp': datetime.fromtimestamp(message['timestamp_ms']/1000.0), 'content': new_content}
+            messages[i] = message
 
-    return messages
+        chats_dict_by_hooman[hooman] = messages
+
+    return chats_dict_by_hooman
 
 
 def group_by_day(messages):
@@ -100,6 +103,10 @@ def group_by_day(messages):
     
     return grouped    
 
+chats_dict = parse_messenger()
+messages = [(k,chats_dict[k]) for k in chats_dict][3]
+grouped = group_by_day(messages[1])
+print(grouped)
 def group_by_day_list(messages):
     grouped = group_by_day(messages)
     
