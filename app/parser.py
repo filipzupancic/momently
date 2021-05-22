@@ -2,7 +2,9 @@ from datetime import datetime
 
 from os import listdir
 import json
-
+import nltk
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize, sent_tokenize
 
 def parse_whatsapp(filename):
 
@@ -32,10 +34,10 @@ def parse_whatsapp(filename):
 
 
 def parse_instagram():
-    return parse_inbox_type("messages/instagram/inbox")
+    return parse_inbox_type("messages/instagram/inbox/")
 
-def parse_facebook():
-    return parse_inbox_type("messages/facebook/inbox")
+def parse_messenger():
+    return parse_inbox_type("messages/facebook/inbox/")
 
 
 # also for instagram
@@ -80,13 +82,11 @@ def group_by_day(messages):
     
     return grouped    
 
-messages = parse_messenger()
-grouped = group_by_day(messages)
-print(grouped)
+#messages = parse_messenger()
+##grouped = group_by_day(messages)
+#print(grouped)
 
-import nltk
-from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize, sent_tokenize
+
 
 def count_word_frequency_in_text(text):
     # Tokenizing the text
