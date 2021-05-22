@@ -1,7 +1,9 @@
 from datetime import datetime
+from collections import defaultdict
 
 from os import listdir
 import json
+from typing import DefaultDict
 import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize, sent_tokenize
@@ -33,7 +35,7 @@ def parse_whatsapp_file(filename):
     return formatted
 
 def parse_all():
-    print(parse_messenger())
+    #print(parse_messenger())
     return parse_instagram() + parse_whatsapp() + parse_messenger()
 
 def parse_whatsapp():
@@ -62,13 +64,20 @@ def parse_messenger():
 def parse_inbox_type(path):
 
     hoomans = []
-    chats_dict_by_hooman = {}
-
+    chats_dict_by_hooman = defaultdict(lambda : [])
+    
     for hooman in listdir(path):
-        with open(path + hooman + '/message_1.json', encoding='ASCII') as f:
-            data = json.load(f)#.items())
+        #print(listdir(path+hooman))
+        for message_file in listdir(path+hooman):
+            data = None
+            if len(message_file) > 5:
+                if message_file[-5:] == '.json':
+                    with open(path + hooman + '/' + message_file, encoding='ASCII') as f:
+                        data = json.load(f)#.items())
+            if data:
+                chats_dict_by_hooman[hooman].extend(data['messages'])
         hoomans.append(hooman)
-        chats_dict_by_hooman[hooman] = data['messages']
+        
     
     for hooman in hoomans:
         messages = chats_dict_by_hooman[hooman]
@@ -77,7 +86,7 @@ def parse_inbox_type(path):
                 new_content = message['content']    
             else:
                 new_content = 'SLIKA TODO'
-            
+            message['sender_name']
             message = {'sender_name': message['sender_name'], 'timestamp': datetime.fromtimestamp(message['timestamp_ms']/1000.0), 'content': new_content}
             messages[i] = message
 
@@ -89,7 +98,7 @@ def parse_inbox_type(path):
 def group_by_day(messages):
 
     grouped = {}
-
+    #print(messages)
     for message in messages:
         date = message["timestamp"].strftime('%b %d, %Y')
         if date not in grouped:
@@ -106,7 +115,7 @@ def group_by_day(messages):
 chats_dict = parse_messenger()
 messages = [(k,chats_dict[k]) for k in chats_dict][3]
 grouped = group_by_day(messages[1])
-print(grouped)
+#print(grouped)
 def group_by_day_list(messages):
     grouped = group_by_day(messages)
     
