@@ -6,6 +6,7 @@ import json
 from typing import DefaultDict
 import nltk
 from nltk.corpus import stopwords
+from nltk.featstruct import retract_bindings
 from nltk.tokenize import word_tokenize, sent_tokenize
 
 def parse_whatsapp_file(filename):
@@ -16,8 +17,8 @@ def parse_whatsapp_file(filename):
     formatted = []
 
     for line in lines:
+        try:
             date = datetime.strptime(line[:17], '%d/%m/%Y, %H:%M')
-
             string = line[17:].split(":")[1].replace('\n','')
             #print(datetime.dline[:15])
             message = {
@@ -25,8 +26,10 @@ def parse_whatsapp_file(filename):
                 "sender": line[17:].split(":")[0],
                 "timestamp": date
             }
-            print(date)
             formatted.append(message)
+        # TODO better error handling
+        except Exception as e:
+            print(e)
 
     return formatted
 
@@ -45,7 +48,12 @@ def parse_whatsapp():
 def parse_instagram():
     if len(listdir("messages/instagram/")) == 0:
         return []
-    return parse_inbox_type("messages/instagram/inbox/")
+    chats_dict_by_hooman = parse_inbox_type("messages/instagram/inbox/")
+
+    all_chats = []
+    for chat in chats_dict_by_hooman.values():
+        all_chats += chat
+    return all_chats
 
 def parse_messenger():
     if len(listdir("messages/facebook/")) == 0:
@@ -53,7 +61,10 @@ def parse_messenger():
 
     chats_dict_by_hooman = parse_inbox_type("messages/facebook/inbox/")
 
-    return "".join([chat for chat in chats_dict_by_hooman.values()])
+    all_chats = []
+    for chat in chats_dict_by_hooman.values():
+        all_chats += chat
+    return all_chats
 
 
 # also for instagram
@@ -96,9 +107,9 @@ def group_by_day(messages):
     grouped = {}
     #print(messages)
     for message in messages:
-        date = message["timestamp"].strftime('%b %d, %Y')
+        date = message["timestamp"]#.strftime('%b %d, %Y')
         # this needs to bo done so that grouping is done
-        date = datetime.datetime(date.year, date.month, date.day)
+        date = datetime(date.year, date.month, date.day)
         if date not in grouped:
             grouped[date] = []
         
@@ -135,8 +146,13 @@ def group_by_day_list(messages):
 #print(grouped)
 
 def format_grouped_messages(groupped_messages, formatting="%b %d, %Y"):
+    for message in groupped_messages:
+        message["date"] = message["date"].strftime(formatting)
     
-    return list(map(lambda x: x.strftime(formatting), groupped_messages))
+    return groupped_messages
+
+def zan_formatting(groupped_messages):
+    return format_grouped_messages(groupped_messages, "%Y/%m/%d")
 
 
 def count_word_frequency_in_text(text):
