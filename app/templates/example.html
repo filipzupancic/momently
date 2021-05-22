@@ -1,5 +1,14 @@
 <h1>HI</h1>
 
-<p>{{original}}</p>
 
-<p>{{summary}}</p>
+
+
+{% for daily, summary in data %}
+    <p>{{daily.content}}</p>
+    <p></p>
+    <p>{{summary}}</p>
+    <p></p>
+    <p></p>
+{% endfor %}
+
+

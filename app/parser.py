@@ -1,4 +1,5 @@
-import datetime
+from datetime import datetime
+
 from os import listdir
 import json
 
@@ -12,7 +13,7 @@ def parse_whatsapp(filename):
 
     for line in lines:
         try:
-            date = datetime.datetime.strptime(line[:17], '%d/%m/%Y, %H:%M')
+            date = datetime.strptime(line[:17], '%d/%m/%Y, %H:%M')
 
             string = print(line[17:].split(":")[1].replace('\n',''))
             #print(datetime.dline[:15])
@@ -28,8 +29,9 @@ def parse_whatsapp(filename):
         
     return formatted
 
-
+# also for instagram
 def parse_messenger():
+    
     
 
     path = "messages/inbox/"
@@ -47,9 +49,9 @@ def parse_messenger():
     for i, message in enumerate(messages):
         print(i)
         if 'content' in message:
-            message = {'sender_name': message['sender_name'], 'timestamp': message['timestamp_ms'], 'content': message['content']}
+            message = {'sender_name': message['sender_name'], 'timestamp': datetime.fromtimestamp(message['timestamp_ms']/1000.0), 'content': message['content']}
         else:
-            message = {'sender_name': message['sender_name'], 'timestamp': message['timestamp_ms'], 'content': 'SLIKA TODO'}
+            message = {'sender_name': message['sender_name'], 'timestamp': datetime.fromtimestamp(message['timestamp_ms']/1000.0), 'content': 'SLIKA TODO'}
         messages[i] = message
     print(messages)
 
