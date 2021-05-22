@@ -3,7 +3,6 @@ An application that automatically generates a digital diary based on information
 
 
 
-
 # Requirements
 
 ```
@@ -34,3 +33,13 @@ Unzip folder and copy contents from messages folder into messages/facebook (or i
 Download chat history from whatsapp. File should be txt format. Copy file to messages/whatsapp
 
 
+# Demo Frontend site
+
+Useful link for deploying Vue
+
+```
+npm run build
+```
+copy dist to:
+
+https://app.netlify.com/drop
