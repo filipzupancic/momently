@@ -3,6 +3,12 @@
     <div class="row example-centered">
         <div class="col-md-12 example-title">
             <h2>Your memories</h2>
+            <ul v-if="info && info.length" class="list-group">
+                <li v-for="(info) in plants" :key="(info)">
+                    <p>{{ plant }}</p>
+                </li>
+            </ul>
+            <p></p>
         </div>
         <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
             <ul class="timeline timeline-centered">
@@ -66,12 +72,27 @@
 
 <script>
 import './diary.css'
+import axios from 'axios';
+
 
 export default {
   name: 'Home',
   props: {
     msg: String
-  }
+  },
+  data() {
+    return {
+      info: null,
+    }
+  },
+  beforeCreate () {
+    axios.get('http://127.0.0.1:8000/events', {}, {
+            headers: {
+                'Content-Type' : 'form-data'
+            }
+        })
+      .then(response => (this.info = response))
+  },
 }
 </script>
 

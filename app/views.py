@@ -37,12 +37,14 @@ def group_by_day_list(messages):
 def events(request, is_testing=False):
     #messages = parse_messenger()
 
-    # events = [
-    #     {
-    #         "date": "2020-07-08",
-    #         "content": "Hi filip"
-    #     }
-    # ]
+    events = [
+        {
+            "date": "2020-07-08",
+            "content": "Hi filip"
+        }
+    ]
+    return JsonResponse(events, safe=False)
+
     messages = parse_messenger()
     grouped_list = group_by_day_list(messages)
 
