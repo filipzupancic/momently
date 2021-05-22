@@ -34,10 +34,10 @@ def parse_whatsapp(filename):
 
 
 def parse_instagram():
-    return parse_inbox_type("messages/instagram/inbox")
+    return parse_inbox_type("messages/instagram/inbox/")
 
 def parse_messenger():
-    return parse_inbox_type("messages/facebook/inbox")
+    return parse_inbox_type("messages/facebook/inbox/")
 
 
 # also for instagram
