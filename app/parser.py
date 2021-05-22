@@ -3,6 +3,7 @@ from datetime import datetime
 from os import listdir
 import json
 
+
 def parse_whatsapp(filename):
 
     file = open(filename,"r")
@@ -29,12 +30,16 @@ def parse_whatsapp(filename):
         
     return formatted
 
-# also for instagram
-def parse_messenger():
-    
-    
 
-    path = "messages/inbox/"
+def parse_instagram():
+    return parse_inbox_type("messages/instagram/inbox")
+
+def parse_facebook():
+    return parse_inbox_type("messages/facebook/inbox")
+
+
+# also for instagram
+def parse_inbox_type(path):
 
     hoomans = []
     chats = {}
