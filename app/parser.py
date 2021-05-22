@@ -152,6 +152,8 @@ def format_grouped_messages(groupped_messages, formatting="%b %d, %Y"):
     return groupped_messages
 
 def zan_formatting(groupped_messages):
+
+    raise Exception()
     return format_grouped_messages(groupped_messages, "%Y/%m/%d")
 
 
