@@ -88,7 +88,7 @@ def group_by_day(messages):
     grouped = {}
 
     for message in messages:
-        date = message["timestamp"].strftime('%d/%m/%y')
+        date = message["timestamp"].strftime('%b %d, %Y')
         if date not in grouped:
             grouped[date] = []
         
@@ -103,11 +103,13 @@ def group_by_day(messages):
 def group_by_day_list(messages):
     grouped = group_by_day(messages)
     
-    return [ {
+    elements = [ {
         "date": key,
         "content": grouped[key]
     }  for key in grouped.keys()]
 
+    elements.sort(key=lambda x: x["date"], reverse=True)
+    return elements
 #messages = parse_messenger()
 ##grouped = group_by_day(messages)
 #print(grouped)
