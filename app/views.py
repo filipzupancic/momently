@@ -1,37 +1,11 @@
 from django.http.response import JsonResponse
-from app.parser import parse_messenger
+from app.parser import group_by_day, group_by_day_list, parse_all, parse_messenger
 from django.shortcuts import render
 from pysummarization.nlpbase.auto_abstractor import AutoAbstractor
 from pysummarization.tokenizabledoc.simple_tokenizer import SimpleTokenizer
 from pysummarization.abstractabledoc.top_n_rank_abstractor import TopNRankAbstractor
 
 
-# Create your views here.
-
-def group_by_day(messages):
-
-    grouped = {}
-
-    for message in messages:
-        date = message["timestamp"].strftime('%d/%m/%y')
-        if date not in grouped:
-            grouped[date] = []
-        
-        grouped[date].append(message["content"])
-
-    # join into single string
-    for key in grouped:
-        grouped[key] = ". ".join(grouped[key])
-    
-    return grouped    
-
-def group_by_day_list(messages):
-    grouped = group_by_day(messages)
-    
-    return [ {
-        "date": key,
-        "content": grouped[key]
-    }  for key in grouped.keys()]
 
 # main function - must return as specified here
 def events(request, is_testing=False):
@@ -43,7 +17,7 @@ def events(request, is_testing=False):
     #         "content": "Hi filip"
     #     }
     # ]
-    messages = parse_messenger()
+    messages = parse_all()
     grouped_list = group_by_day_list(messages)
 
      # Object of automatic summarization.
