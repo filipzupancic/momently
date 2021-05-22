@@ -1,11 +1,49 @@
+from django.http.response import JsonResponse
+from app.parser import parse_messenger
 from django.shortcuts import render
 from pysummarization.nlpbase.auto_abstractor import AutoAbstractor
 from pysummarization.tokenizabledoc.simple_tokenizer import SimpleTokenizer
 from pysummarization.abstractabledoc.top_n_rank_abstractor import TopNRankAbstractor
 
 
-from app.summary import generate_summary
 # Create your views here.
+
+def group_by_day(messages):
+
+    grouped = {}
+
+    for message in messages:
+        date = message["timestamp"].strftime('%d/%m/%y')
+
+        if date not in grouped:
+            grouped[message]
+            pass
+
+    #{ message["content"] :  for message in messages}
+
+
+# main function - must return as specified here
+def events(request):
+    #messages = parse_messenger()
+
+    events = [
+        {
+            "date": "2020-07-06",
+            "content": "This is my recap"
+        },
+        {
+            "date": "2020-07-07",
+            "content": "This is my other recap"
+        },
+        {
+            "date": "2020-07-08",
+            "content": "Hi filip"
+        }
+    ]
+    return JsonResponse(events, safe=False)
+
+    
+
 
 
 def sample_function(request):
@@ -76,10 +114,12 @@ def sample_function(request):
 
 
     # Output result.
-    for sentence in result_dict["summarize_result"]:
-        print(sentence)
+    # for sentence in result_dict["summarize_result"]:
+    #     print(sentence)
 
+    parse_messenger()
 
+    # JsonResponse()
     return render(request, 'example.html' ,{
         "original": document,
         "summary": "".join(result_dict["summarize_result"])
