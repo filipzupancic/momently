@@ -1,5 +1,5 @@
 from django.http.response import JsonResponse
-from app.parser import group_by_day, group_by_day_list, parse_all, parse_messenger
+from app.parser import format_grouped_messages, group_by_day, group_by_day_list, parse_all, parse_messenger
 from django.shortcuts import render
 from pysummarization.nlpbase.auto_abstractor import AutoAbstractor
 from pysummarization.tokenizabledoc.simple_tokenizer import SimpleTokenizer
@@ -32,14 +32,17 @@ def events(request, is_testing=False):
 
     summaries = []
 
-    for daily_message in grouped_list:
-        result_dict = auto_abstractor.summarize(daily_message["content"], abstractable_doc)
-        
-        daily_summary = "".join(result_dict["summarize_result"])
-        summaries.append(daily_summary)
+    
     if not is_testing:
+        grouped_list = format_grouped_messages(grouped_list, "%b %d %Y")
         return JsonResponse(grouped_list, safe=False)
     else:
+        for daily_message in grouped_list:
+            result_dict = auto_abstractor.summarize(daily_message["content"], abstractable_doc)
+            
+            daily_summary = "".join(result_dict["summarize_result"])
+            summaries.append(daily_summary)
+    
         return render(request, 'example.html' ,{
             "data": zip(grouped_list, summaries)
         })

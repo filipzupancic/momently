@@ -14,10 +14,9 @@ def parse_whatsapp_file(filename):
     formatted = []
 
     for line in lines:
-        try:
             date = datetime.strptime(line[:17], '%d/%m/%Y, %H:%M')
 
-            #string = print(line[17:].split(":")[1].replace('\n',''))
+            string = line[17:].split(":")[1].replace('\n','')
             #print(datetime.dline[:15])
             message = {
                 "content": string,
@@ -26,14 +25,10 @@ def parse_whatsapp_file(filename):
             }
             print(date)
             formatted.append(message)
-        except Exception as e:
-            #print(e)
-            pass
-        
+
     return formatted
 
 def parse_all():
-    print(parse_messenger())
     return parse_instagram() + parse_whatsapp() + parse_messenger()
 
 def parse_whatsapp():
@@ -51,11 +46,12 @@ def parse_instagram():
     return parse_inbox_type("messages/instagram/inbox/")
 
 def parse_messenger():
-    path = "messages/facebook/inbox/"
     if len(listdir("messages/facebook/")) == 0:
         return []
 
-    return parse_inbox_type(path)
+    chats_dict_by_hooman = parse_inbox_type("messages/facebook/inbox/")
+
+    return "".join([chat for chat in chats_dict_by_hooman.values()])
 
 
 # also for instagram
@@ -92,6 +88,8 @@ def group_by_day(messages):
 
     for message in messages:
         date = message["timestamp"].strftime('%b %d, %Y')
+        # this needs to bo done so that grouping is done
+        date = datetime.datetime(date.year, date.month, date.day)
         if date not in grouped:
             grouped[date] = []
         
@@ -103,10 +101,6 @@ def group_by_day(messages):
     
     return grouped    
 
-chats_dict = parse_messenger()
-messages = [(k,chats_dict[k]) for k in chats_dict][3]
-grouped = group_by_day(messages[1])
-print(grouped)
 def group_by_day_list(messages):
     grouped = group_by_day(messages)
     
@@ -117,10 +111,19 @@ def group_by_day_list(messages):
 
     elements.sort(key=lambda x: x["date"], reverse=True)
     return elements
+
+
+# chats_dict = parse_messenger()
+# messages = [(k,chats_dict[k]) for format_grouped_messagesk in chats_dict][3]
+# grouped = group_by_day(messages[1])
+# print(grouped)
 #messages = parse_messenger()
 ##grouped = group_by_day(messages)
 #print(grouped)
 
+def format_grouped_messages(groupped_messages, formatting="%b %d, %Y"):
+    
+    return list(map(lambda x: x.strftime(formatting), groupped_messages))
 
 
 def count_word_frequency_in_text(text):
