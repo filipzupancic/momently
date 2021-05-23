@@ -14,11 +14,6 @@ def events(request, is_testing=False):
 
 
 
-<<<<<<< HEAD
-    messages = parse_messenger()
-
-=======
->>>>>>> c26b453d87b1c4c81f77eece00be03a1b1b9065a
     # events = [
     #     {
     #         "date": "2020-07-08",

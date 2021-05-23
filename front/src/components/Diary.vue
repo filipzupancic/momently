@@ -81,9 +81,10 @@
       </div>
     </div>
     <hr style="background-color: #d8ac87; border-top: 1px; padding:0.5px; width: 10%;">
-    <div style=" padding-right:5%; padding-left:5px; padding-bottom:5%;">
+    <div style="content-align: center; padding-bottom:5%;">
       <h3>Conversation intensity chart</h3>
       <p style="padding-bottom: 20px;">Conversation intensity chart tells how many characters did you send in a specific period of time.</p>
+      <AreaChart/>
     </div>
 </div>
     
@@ -94,27 +95,18 @@ import './diary.css'
 import axios from 'axios';
 import HotelDatePicker from 'vue-hotel-datepicker'
 import 'vue-hotel-datepicker/dist/vueHotelDatepicker.css';
-<<<<<<< HEAD
-=======
-import Vue from 'vue'
-import Bars from 'vuebars'
-
-
-Vue.use(Bars)
-
->>>>>>> c26b453d87b1c4c81f77eece00be03a1b1b9065a
+import AreaChart from "./AreaChart.vue";
 
 export default {
   name: 'Diary',
-  props: {
-    msg: String
-  },
   components: {
     HotelDatePicker,
+    AreaChart,
   },
   data() {
     return {
       results: [],
+
     }
   },
   beforeCreate () {
@@ -127,10 +119,6 @@ export default {
 
       console.log(this.results)
   },
-<<<<<<< HEAD
-  mounted() {
-    
-=======
   methods: {
     inputUpdated: (event, dateFrom, dateTo) => {
       console.log(event, dateFrom, dateTo);
@@ -147,9 +135,6 @@ export default {
       .then(response => (this.results = response.data))
 
     }
-
-
->>>>>>> c26b453d87b1c4c81f77eece00be03a1b1b9065a
   }
 }
 </script>
