@@ -9,7 +9,7 @@
             <hr style="background-color: #d8ac87; border-top: 1px; padding:0.5px; width: 10%;">
         </div>
         <div style=" padding-bottom: 30px;">
-          <HotelDatePicker />
+          <HotelDatePicker @period-selected='inputUpdated' />
         </div>
         <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2" style="margin-top: 30px;">
             <ul v-if="results && results.length" class="timeline timeline-centered">
@@ -94,6 +94,15 @@ import './diary.css'
 import axios from 'axios';
 import HotelDatePicker from 'vue-hotel-datepicker'
 import 'vue-hotel-datepicker/dist/vueHotelDatepicker.css';
+<<<<<<< HEAD
+=======
+import Vue from 'vue'
+import Bars from 'vuebars'
+
+
+Vue.use(Bars)
+
+>>>>>>> c26b453d87b1c4c81f77eece00be03a1b1b9065a
 
 export default {
   name: 'Diary',
@@ -118,8 +127,29 @@ export default {
 
       console.log(this.results)
   },
+<<<<<<< HEAD
   mounted() {
     
+=======
+  methods: {
+    inputUpdated: (event, dateFrom, dateTo) => {
+      console.log(event, dateFrom, dateTo);
+
+      axios.get('http://127.0.0.1:8000/events',  
+                {params: {
+                  dateFrom: dateFrom.toISOString().split('T')[0],
+                  dateTo: dateTo.toISOString().split('T')[0]
+                }}, {
+                  headers: {
+                      'Content-Type' : 'form-data'
+                  }
+              })
+      .then(response => (this.results = response.data))
+
+    }
+
+
+>>>>>>> c26b453d87b1c4c81f77eece00be03a1b1b9065a
   }
 }
 </script>

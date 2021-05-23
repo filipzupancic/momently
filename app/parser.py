@@ -35,7 +35,7 @@ def parse_whatsapp_file(filename):
     return formatted
 
 def parse_all():
-    return parse_instagram() + parse_whatsapp() + parse_messenger()
+    return parse_messenger() + parse_whatsapp() + parse_instagram()
 
 def parse_whatsapp():
     
@@ -58,18 +58,30 @@ def parse_instagram():
     return all_chats
     '''
 
+def parse_instagram_list():
+    chats_dict_by_hooman = parse_instagram()
+    
+    all_chats = []
+    for chat in chats_dict_by_hooman.values():
+        all_chats += chat
+    return all_chats
+
+def parse_messenger_list():
+    chats_dict_by_hooman = parse_messenger()
+    
+    all_chats = []
+    for chat in chats_dict_by_hooman.values():
+        all_chats += chat
+    return all_chats
+
+
 def parse_messenger():
     if len(listdir("messages/facebook/")) == 0:
         return []
 
     chats_dict_by_hooman = parse_inbox_type("messages/facebook/inbox/")
     return chats_dict_by_hooman
-    '''
-    all_chats = []
-    for chat in chats_dict_by_hooman.values():
-        all_chats += chat
-    return all_chats
-    '''
+
 # also for instagram
 def parse_inbox_type(path):
 

@@ -9,28 +9,23 @@ from datetime import datetime
 
 # main function - must return as specified here
 def events(request, is_testing=False):
-    date_from = request.GET.get('date_from',None)
-    date_to = request.GET.get('date_to',None)
-    #messages = parse_messenger()
+    date_from = request.GET.get('dateFrom',None)
+    date_to = request.GET.get('dateTo',None)
 
 
-    events = [
-        {
-            "date": "2020-07-08",
-            "content": "Hi filip"
-        }
-    ]
-    return JsonResponse(events, safe=False)
 
+<<<<<<< HEAD
     messages = parse_messenger()
 
+=======
+>>>>>>> c26b453d87b1c4c81f77eece00be03a1b1b9065a
     # events = [
     #     {
     #         "date": "2020-07-08",
     #         "content": "Hi filip"
     #     }
     # ]
-    messages = parse_all()
+    messages = parse_messenger()
     grouped_list = group_by_day_list(messages)
 
      # Object of automatic summarization.
