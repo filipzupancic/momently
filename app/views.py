@@ -18,6 +18,7 @@ def events(request, is_testing=False):
     date_from = request.GET.get('dateFrom',None)
     date_to = request.GET.get('dateTo',None)
 
+
     if settings.DEBUG:
         summaries = [
             {
