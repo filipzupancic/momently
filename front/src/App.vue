@@ -17,7 +17,8 @@
           <div class="u-nav-container" >
             <ul class="u-nav u-unstyled u-nav-1">
               <li class="u-nav-item"><a id="menu-momently" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-grey" href="/" style="padding: 10px 20px; color: #000000;">Momently</a></li>
-              <li class="u-nav-item"><a id="menu-about" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-grey" href="/about" style="padding: 10px 20px; color: #000000;">About</a></li>
+              <li class="u-nav-item">              <div id="menu-about" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-grey">                <router-link to="/about"  >About</router-link></div></li>
+
             </ul>
           </div>
           <div class="u-nav-container-collapse">
