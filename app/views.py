@@ -66,7 +66,20 @@ def events(request, is_testing=False):
             "data": zip(grouped_list, summaries)
         })
 
+def graph_points(request):
+
+    f = open('tocke.txt', 'r')
+    lines = f.readlines()
     
+    all_points = []
+    for line in lines:
+        point = float(line.replace(',',''))
+        all_points.append(point)
+
+    return JsonResponse(all_points, safe=False)
+
 
 def test_events(request):
     return events(request, True)
+
+

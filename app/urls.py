@@ -13,6 +13,7 @@ urlpatterns = [
     #path('', views.sample_function, name="index"),
     path('events', views.events, name="events"),
     path('test-events', views.test_events, name="events"),
-    path('ping', views.ping, name="ping")
+    path('ping', views.ping, name="ping"),
+    path('graph-points', views.graph_points, name="graph_points")
 
 ]
