@@ -1,9 +1,8 @@
 <template>
-  
   <div id="app">
     <header class="u-clearfix u-header u-header" id="sec-5d1a">
     <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-        <a href="https://nicepage.com" class="u-image u-logo u-image-1">
+        <a href="" class="u-image u-logo u-image-1">
           <img src="./images/feather-pen2.png" style="width: 40px; height: 40px;" class="u-logo-image u-logo-image-1">
         </a>
         <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
@@ -17,8 +16,8 @@
           </div>
           <div class="u-nav-container" >
             <ul class="u-nav u-unstyled u-nav-1">
-              <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="http://localhost:8080/" style="padding: 10px 20px; ;">Momently</a></li>
-              <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="http://localhost:8080/about" style="padding: 10px 20px; color: #d8ac87;">About</a></li>
+              <li class="u-nav-item"><a id="menu-momently" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-grey" href="http://localhost:8080/" style="padding: 10px 20px; color: #000000;">Momently</a></li>
+              <li class="u-nav-item"><a id="menu-about" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-grey" href="http://localhost:8080/about" style="padding: 10px 20px; color: #000000;">About</a></li>
             </ul>
           </div>
           <div class="u-nav-container-collapse">
@@ -26,8 +25,8 @@
               <div class="u-sidenav-overflow">
                 <div class="u-menu-close"></div>
                 <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
-                  <li class="u-nav-item"><a class="u-button-style u-nav-link" href="http://localhost:8080/">Momently</a></li>
-                  <li class="u-nav-item"><a class="u-button-style u-nav-link" href="http://localhost:8080/about">About</a></li>
+                  <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-hover-grey" style="padding: 20px 20px; color: #000000;" href="http://localhost:8080/">Momently</a></li>
+                  <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-hover-grey" style="padding: 20px 20px; color: #000000;" href="http://localhost:8080/about">About</a></li>
                 </ul>
               </div>
             </div>
@@ -61,6 +60,26 @@ export default {
   text-align: center;
   color: #2c3e50;
   background-color: #f3e3d3;
+}
+
+#menu-momently :active {
+  background-color: #ffffff;
+  border-radius: 100%;
+}
+
+#menu-momently :visited {
+  background-color: #ffffff;
+  border-radius: 100%;
+}
+
+#menu-about :active {
+  background-color: #ffffff;
+  border-radius: 100%;
+}
+
+#menu-about :visited {
+  background-color: #ffffff;
+  border-radius: 100%;
 }
 
 </style>
