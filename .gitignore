@@ -131,3 +131,11 @@ dmypy.json
 messages/instagram/*
 messages/facebook/*
 messages/whatsapp/*
+
+
+!messages/instagram/__init__.py
+!messages/facebook/__init__.py
+!messages/whatsapp/__init__.py
+
+storage/static
+admin/
