@@ -50,24 +50,26 @@ def parse_instagram():
     if len(listdir("messages/instagram/")) == 0:
         return []
     chats_dict_by_hooman = parse_inbox_type("messages/instagram/inbox/")
-
+    return chats_dict_by_hooman
+    '''
     all_chats = []
     for chat in chats_dict_by_hooman.values():
         all_chats += chat
     return all_chats
+    '''
 
 def parse_messenger():
     if len(listdir("messages/facebook/")) == 0:
         return []
 
     chats_dict_by_hooman = parse_inbox_type("messages/facebook/inbox/")
-
+    return chats_dict_by_hooman
+    '''
     all_chats = []
     for chat in chats_dict_by_hooman.values():
         all_chats += chat
     return all_chats
-
-
+    '''
 # also for instagram
 def parse_inbox_type(path):
 
@@ -103,7 +105,13 @@ def parse_inbox_type(path):
     return chats_dict_by_hooman
 
 
-def group_by_day(messages):
+def group_by_day(chats_dict_by_hooman, hooman=None):
+    if hooman:
+        messages = chats_dict_by_hooman[hooman]
+    else:
+        messages = []
+        for hooman in chats_dict_by_hooman:
+            messages.extend(chats_dict_by_hooman[hooman][:10])
 
     grouped = {}
     #print(messages)
@@ -177,3 +185,10 @@ def count_word_frequency_in_text(text):
         else:
             freqTable[word] = 1
     return freqTable
+
+'''
+hooman = list(grouped.keys())[0]
+cd = count_word_frequency_in_text(grouped[hooman])
+top_words = sorted([(cd[k],k) for k in cd], reverse=True)[:5]
+top_words
+'''

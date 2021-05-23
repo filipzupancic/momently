@@ -17,17 +17,18 @@
           </div>
           <div class="u-nav-container" >
             <ul class="u-nav u-unstyled u-nav-1">
-              <router-link to="/"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="http://localhost:8080/" style="padding: 10px 20px; ;">Momently</a></li></router-link>
-              <router-link to="/diary"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="http://localhost:8080/diary" style="padding: 10px 20px; color: #d8ac87;">About</a></li></router-link>
+              <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="http://localhost:8080/" style="padding: 10px 20px; ;">Momently</a></li>
+              <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="http://localhost:8080/about" style="padding: 10px 20px; color: #d8ac87;">About</a></li>
             </ul>
           </div>
           <div class="u-nav-container-collapse">
             <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
               <div class="u-sidenav-overflow">
                 <div class="u-menu-close"></div>
-                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="http://localhost:8080/">Home</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="http://localhost:8080/"></a>
-</li></ul>
+                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
+                  <li class="u-nav-item"><a class="u-button-style u-nav-link" href="http://localhost:8080/">Momently</a></li>
+                  <li class="u-nav-item"><a class="u-button-style u-nav-link" href="http://localhost:8080/about">About</a></li>
+                </ul>
               </div>
             </div>
             <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
@@ -35,6 +36,9 @@
         </nav>
       </div></header>
     <router-view></router-view>
+    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-746c"><div class="u-clearfix u-sheet u-sheet-1">
+        <p class="u-small-text u-text u-text-variant u-text-1">Created with <img src="./images/heart.png"> by Official voice channel.</p>
+      </div></footer>
   </div>
   
 </template>
