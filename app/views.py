@@ -35,6 +35,10 @@ def events(request, is_testing=False):
             {
                 "date": "21. June, 2020",
                 "content": "Are you coming to the seminar tomorrow morning? I heard that attendance is mandatory and if you don't come you lose the right to attend exam."
+            },
+            {
+                "date": "22. June, 2020",
+                "content": "I heard that Janez had popcorn with his girlfriend yesterdays."
             }
         ]
     else:
