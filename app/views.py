@@ -9,18 +9,9 @@ from datetime import datetime
 
 # main function - must return as specified here
 def events(request, is_testing=False):
-    date_from = request.GET.get('date_from',None)
-    date_to = request.GET.get('date_to',None)
-    #messages = parse_messenger()
+    date_from = request.GET.get('dateFrom',None)
+    date_to = request.GET.get('dateTo',None)
 
-
-    events = [
-        {
-            "date": "2020-07-08",
-            "content": "Hi filip"
-        }
-    ]
-    return JsonResponse(events, safe=False)
 
     messages = parse_messenger()
 
