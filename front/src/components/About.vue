@@ -11,7 +11,7 @@
             <div class="u-align-left u-container-style u-layout-cell u-right-cell u-size-30 u-layout-cell-1">
               <div class="u-container-layout u-valign-middle u-container-layout-2">
                 <h2 class="u-custom-font u-font-playfair-display u-text u-text-1">About</h2>
-                <p class="u-text u-text-2">Momently brings back memories that would otherwise get lost in time by writing your personal diary. We are a team of 4 passionate scientists and visionars. Help us create a better world for everyone.</p>
+                <p class="u-text u-text-2">Momently brings back memories that would otherwise get lost in time by writing your personal diary. It harnesses the power of data you input into your devices daily. We are a team of 4 passionate scientists and visionars. Help us create a better world for everyone.</p>
               </div>
             </div>
             <div class="u-container-style u-image u-layout-cell u-left-cell u-size-30 u-image-1">
