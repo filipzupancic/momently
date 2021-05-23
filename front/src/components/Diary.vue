@@ -24,59 +24,6 @@
                     </div>
                 </li>
             </ul>
-            <ul class="timeline timeline-centered">
-                <li class="timeline-item">
-                    <div class="timeline-info">
-                        <span>March 12, 2016</span>
-                    </div>
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <h3 class="timeline-title">Event Title</h3>
-                        <p>Nullam vel sem. Nullam vel sem. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Donec orci lectus, aliquam ut, faucibus non, euismod id, nulla. Donec vitae sapien ut libero venenatis faucibus. ullam dictum felis
-                            eu pede mollis pretium. Pellentesque ut neque.</p>
-                    </div>
-                </li>
-                <li class="timeline-item">
-                    <div class="timeline-info">
-                        <span>March 23, 2016</span>
-                    </div>
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <h3 class="timeline-title">Event Title</h3>
-                        <p>Nullam vel sem. Nullam vel sem. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Donec orci lectus, aliquam ut, faucibus non, euismod id, nulla. Donec vitae sapien ut libero venenatis faucibus. ullam dictum felis
-                            eu pede mollis pretium. Pellentesque ut neque. </p>
-                    </div>
-                </li>
-                <li class="timeline-item period">
-                    <div class="timeline-info"></div>
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <h2 class="timeline-title">April 2016</h2>
-                    </div>
-                </li>
-                <li class="timeline-item">
-                    <div class="timeline-info">
-                        <span>April 02, 2016</span>
-                    </div>
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <h3 class="timeline-title">Event Title</h3>
-                        <p>Nullam vel sem. Nullam vel sem. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Donec orci lectus, aliquam ut, faucibus non, euismod id, nulla. Donec vitae sapien ut libero venenatis faucibus. ullam dictum felis
-                            eu pede mollis pretium. Pellentesque ut neque. </p>
-                    </div>
-                </li>
-                <li class="timeline-item">
-                    <div class="timeline-info">
-                        <span>April 28, 2016</span>
-                    </div>
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <h3 class="timeline-title">Event Title</h3>
-                        <p>Nullam vel sem. Nullam vel sem. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Donec orci lectus, aliquam ut, faucibus non, euismod id, nulla. Donec vitae sapien ut libero venenatis faucibus. ullam dictum felis
-                            eu pede mollis pretium. Pellentesque ut neque. </p>
-                    </div>
-                </li>
-            </ul>
         </div>
       </div>
     </div>
@@ -106,11 +53,15 @@ export default {
   data() {
     return {
       results: [],
-
+      dates: ['18. June, 2020', '19. June, 2020', '20. June, 2020', '21. June, 2020', '22. June, 2020'],
+      comments: ["I really liked the party Andy organised yesterday. It was a blast!", "Have you started to study for the exam next week yet? I heard its one of the most difficult exams this year.",
+                 "Hey have you heard from Ana, i heard she broke her arm last week while skating. Hope shes doing okay", 
+                 "Are you coming to the seminar tomorrow morning? I heard that attendance is mandatory and if you don't come you lose the right to attend exam.",
+                 "I heard that Janez had popcorn with his girlfriend yesterdays."],
     }
   },
   beforeCreate () {
-    axios.get('http://127.0.0.1:8000/events', {}, {
+    axios.get('https://limitless-scrubland-94079.herokuapp.com/events', {}, {
             headers: {
                 'Content-Type' : 'form-data'
             }

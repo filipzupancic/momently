@@ -21,13 +21,11 @@ export default {
     this.renderChart(
       {
         labels: [
-          "January",
-          "February",
-          "March",
-          "April",
-          "May",
-          "June",
-          "July"
+          "18. June 2020",
+          "19. June 2020",
+          "20. June 2020",
+          "21. June 2020",
+          "22. June 2020",
         ],
         datasets: [
           {
@@ -37,7 +35,7 @@ export default {
             borderWidth: 1,
             pointBorderColor: "white",
             backgroundColor: this.gradient,
-            data: [40, 39, 10, 40, 39, 80, 40]
+            data: [1140, 839, 1510, 740, 1980]
           }
         ]
       },
