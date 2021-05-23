@@ -3,6 +3,7 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 import Home from './components/Home.vue'
 import Diary from './components/Diary.vue'
+import About from './components/About.vue'
 
 Vue.use(VueRouter)
 
@@ -18,7 +19,11 @@ const router = new VueRouter({
     {
       path: '/diary',
       component: Diary
-    }
+    },
+    {
+      path: '/about',
+      component: About
+    },
   ]
 
 })
