@@ -84,9 +84,6 @@
     <div style=" padding-right:5%; padding-left:5px; padding-bottom:5%;">
       <h3>Conversation intensity chart</h3>
       <p style="padding-bottom: 20px;">Conversation intensity chart tells how many characters did you send in a specific period of time.</p>
-      <div>
-        <IntensityChart/>
-      </div>
     </div>
 </div>
     
@@ -97,11 +94,9 @@ import './diary.css'
 import axios from 'axios';
 import HotelDatePicker from 'vue-hotel-datepicker'
 import 'vue-hotel-datepicker/dist/vueHotelDatepicker.css';
-import { Line } from "vue-chartjs";
 
 export default {
   name: 'Diary',
-  extends: Line,
   props: {
     msg: String
   },
@@ -111,8 +106,6 @@ export default {
   data() {
     return {
       results: [],
-      gradient: null,
-      gradient2: null
     }
   },
   beforeCreate () {
@@ -126,31 +119,7 @@ export default {
       console.log(this.results)
   },
   mounted() {
-    this.renderChart(
-      {
-        labels: [
-          "January",
-          "February",
-          "March",
-          "April",
-          "May",
-          "June",
-          "July"
-        ],
-        datasets: [
-          {
-            label: "Data One",
-            borderColor: "#FC2525",
-            pointBackgroundColor: "white",
-            borderWidth: 1,
-            pointBorderColor: "white",
-            backgroundColor: this.gradient,
-            data: [40, 39, 10, 40, 39, 80, 40]
-          }
-        ]
-      },
-      { responsive: true, maintainAspectRatio: false }
-    );
+    
   }
 }
 </script>

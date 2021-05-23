@@ -13,8 +13,6 @@ def events(request, is_testing=False):
     date_to = request.GET.get('date_to',None)
     #messages = parse_messenger()
 
-<<<<<<< HEAD
-=======
 
     events = [
         {
@@ -26,7 +24,6 @@ def events(request, is_testing=False):
 
     messages = parse_messenger()
 
->>>>>>> d1ca297b641e5e384adaaad55cb47cfa4e22329d
     # events = [
     #     {
     #         "date": "2020-07-08",
