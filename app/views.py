@@ -44,7 +44,13 @@ def events(request, is_testing=False):
 
         grouped_list = format_grouped_messages(grouped_list, "%b %d %Y")
 
-        return JsonResponse(grouped_list, safe=False)
+        for daily_message in grouped_list:
+            result_dict = auto_abstractor.summarize(daily_message["content"], abstractable_doc)
+            
+            daily_summary = "".join(result_dict["summarize_result"])
+            summaries.append(daily_summary)
+
+        return JsonResponse(summaries, safe=False)
     else:
         for daily_message in grouped_list:
             result_dict = auto_abstractor.summarize(daily_message["content"], abstractable_doc)
