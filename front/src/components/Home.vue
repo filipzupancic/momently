@@ -11,7 +11,7 @@
                 <h6 class="u-text u-text-body-color u-text-2">Bring back the memories.</h6>
                 <div class="u-border-4 u-border-black u-line u-line-vertical u-line-1"></div>
                 <p class="u-text u-text-body-color u-text-3">Write your diary with a single click.</p>
-                <a href="http://localhost:8080/diary" class="u-border-2 u-border-black u-btn u-button-style u-none u-text-black u-text-hover-white u-btn-1">Begin</a>
+                <a href="http://localhost:8080/diary" class="u-border-2 u-border-black u-btn u-button-style u-none u-text-black u-text-hover-grey u-btn-1">Begin</a>
                 <!--<p class="u-text u-text-4">Created by <a href="http://localhost:8080/" class="u-active-none u-border-1 u-border-white u-btn u-button-link u-button-style u-hover-none u-none u-text-body-alt-color u-btn-2" target="_blank">Official voice channel</a>
                 </p>-->
               </div>

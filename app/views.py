@@ -11,17 +11,6 @@ from pysummarization.abstractabledoc.top_n_rank_abstractor import TopNRankAbstra
 def events(request, is_testing=False):
     #messages = parse_messenger()
 
-<<<<<<< HEAD
-    events = [
-        {
-            "date": "2020-07-08",
-            "content": "Hi filip"
-        }
-    ]
-    return JsonResponse(events, safe=False)
-
-    messages = parse_messenger()
-=======
     # events = [
     #     {
     #         "date": "2020-07-08",
@@ -29,7 +18,6 @@ def events(request, is_testing=False):
     #     }
     # ]
     messages = parse_all()
->>>>>>> 61b3ac92882ad64eb9a7f293aea0023dd524a176
     grouped_list = group_by_day_list(messages)
 
      # Object of automatic summarization.
