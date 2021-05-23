@@ -29,7 +29,8 @@ def parse_whatsapp_file(filename):
             formatted.append(message)
         # TODO better error handling
         except Exception as e:
-            print(e)
+            #print(e)
+            pass
 
     return formatted
 
