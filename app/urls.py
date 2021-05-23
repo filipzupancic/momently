@@ -14,6 +14,4 @@ urlpatterns = [
     path('events', views.events, name="events"),
     path('test-events', views.test_events, name="events"),
 
-]
-
-+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
