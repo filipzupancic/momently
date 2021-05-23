@@ -53,11 +53,15 @@ export default {
   data() {
     return {
       results: [],
-
+      dates: ['18. June, 2020', '19. June, 2020', '20. June, 2020', '21. June, 2020', '22. June, 2020'],
+      comments: ["I really liked the party Andy organised yesterday. It was a blast!", "Have you started to study for the exam next week yet? I heard its one of the most difficult exams this year.",
+                 "Hey have you heard from Ana, i heard she broke her arm last week while skating. Hope shes doing okay", 
+                 "Are you coming to the seminar tomorrow morning? I heard that attendance is mandatory and if you don't come you lose the right to attend exam.",
+                 "I heard that Janez had popcorn with his girlfriend yesterdays."],
     }
   },
   beforeCreate () {
-    axios.get('http://127.0.0.1:8000/events', {}, {
+    axios.get('https://limitless-scrubland-94079.herokuapp.com/events', {}, {
             headers: {
                 'Content-Type' : 'form-data'
             }
