@@ -18,7 +18,7 @@ def events(request, is_testing=False):
     date_from = request.GET.get('dateFrom',None)
     date_to = request.GET.get('dateTo',None)
 
-    if not settings.DEBUG:
+    if settings.DEBUG:
         summaries = [
             {
                 "date": "18. June, 2020",
