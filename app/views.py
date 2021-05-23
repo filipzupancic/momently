@@ -4,8 +4,12 @@ from django.shortcuts import render
 from pysummarization.nlpbase.auto_abstractor import AutoAbstractor
 from pysummarization.tokenizabledoc.simple_tokenizer import SimpleTokenizer
 from pysummarization.abstractabledoc.top_n_rank_abstractor import TopNRankAbstractor
+from django.http import HttpResponse
 
 from datetime import datetime
+
+def ping(request):
+    return HttpResponse("pong")
 
 # main function - must return as specified here
 def events(request, is_testing=False):
