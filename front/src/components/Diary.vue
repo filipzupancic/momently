@@ -81,18 +81,12 @@
       </div>
     </div>
     <hr style="background-color: #d8ac87; border-top: 1px; padding:0.5px; width: 10%;">
-    <div style="padding-left:5%; padding-right:5%; padding-bottom:5%;">
-      <h3 style="padding-bottom: 20px;">Graf intenzitete pogovorov</h3>
-      <bars
-        :data="[1, 2, 5, 9, 5, 10, 3, 5, 2, 5]"
-        :labelData="['1.5.2021', '1.5.2021', '1.5.2021', '1.5.2021', '1.5.2021', '1.5.2021',
-                     '1.5.2021', '1.5.2021', '1.5.2021', '1.5.2021']"
-        :barWidth="1"
-        :labelSize="0.2"
-        labelRotate="0"
-        :max="8"
-        :gradient="['#6fa8dc', '#42b983']">
-      </bars>
+    <div style=" padding-right:5%; padding-left:5px; padding-bottom:5%;">
+      <h3>Conversation intensity chart</h3>
+      <p style="padding-bottom: 20px;">Conversation intensity chart tells how many characters did you send in a specific period of time.</p>
+      <div>
+        <IntensityChart/>
+      </div>
     </div>
 </div>
     
@@ -103,14 +97,11 @@ import './diary.css'
 import axios from 'axios';
 import HotelDatePicker from 'vue-hotel-datepicker'
 import 'vue-hotel-datepicker/dist/vueHotelDatepicker.css';
-import Vue from 'vue'
-import Bars from 'vuebars'
-
-Vue.use(Bars)
-
+import { Line } from "vue-chartjs";
 
 export default {
-  name: 'Home',
+  name: 'Diary',
+  extends: Line,
   props: {
     msg: String
   },
@@ -120,6 +111,8 @@ export default {
   data() {
     return {
       results: [],
+      gradient: null,
+      gradient2: null
     }
   },
   beforeCreate () {
@@ -132,12 +125,39 @@ export default {
 
       console.log(this.results)
   },
+  mounted() {
+    this.renderChart(
+      {
+        labels: [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July"
+        ],
+        datasets: [
+          {
+            label: "Data One",
+            borderColor: "#FC2525",
+            pointBackgroundColor: "white",
+            borderWidth: 1,
+            pointBorderColor: "white",
+            backgroundColor: this.gradient,
+            data: [40, 39, 10, 40, 39, 80, 40]
+          }
+        ]
+      },
+      { responsive: true, maintainAspectRatio: false }
+    );
+  }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #app > div > div > div > div:nth-child(2) > div > div.vhd__datepicker__clear-button > img {
-  display: none;
+  display:none;
 }
 </style>
