@@ -35,7 +35,7 @@ def parse_whatsapp_file(filename):
     return formatted
 
 def parse_all():
-    return parse_instagram_list() + parse_whatsapp() + parse_messenger_list()
+    return parse_messenger() + parse_whatsapp() + parse_instagram()
 
 def parse_whatsapp():
     
